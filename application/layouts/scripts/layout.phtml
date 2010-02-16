@@ -1,0 +1,38 @@
+<?php
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle('Zend Framework Tutorial');
+    echo $this->doctype(); 
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle(); ?>
+</head>
+<body>
+<?php
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+?>
+<div id="content">
+<h1><?php echo $this->escape($this->title); ?></h1>
+<p><a href="<?php echo $site_config['url']?>">Home</a></p>
+<p>
+Artists: 
+<?php
+$alpha = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9');
+$numeric = array('0','1','2','3','4','5','6','7','8','9');
+foreach($alpha AS $letter) {
+    echo '<a href="'.$site_config['url'].'/index/byalpha/'.$site_config['byalphavar'].'/'.$letter.'">'.$letter.'</a> ';
+}
+
+foreach($numeric AS $number) {
+    echo '<a href="'.$site_config['url'].'/index/byalpha/'.$site_config['byalphavar'].'/'.$number.'">'.$number.'</a> ';
+}
+?>
+</p>
+<?php echo $this->layout()->content; ?>
+</div>
+</body>
+</html>

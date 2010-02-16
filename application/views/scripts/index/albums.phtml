@@ -1,0 +1,25 @@
+<?php
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+?>
+<h2>Albums of: <?php echo $this->artist?></h2>
+<?php echo $this->paginator;?>
+<ol>
+<?php 
+if($this->paginator) {
+    foreach($this->paginator AS $key=>$row){
+        echo '<li><span class="label">Album:</span> '.$row->name;
+        if($row->track) {
+            echo '<br/><span class="label">Tracks:</span> '.str_replace(',',', ',$row->track).'';
+        } else {
+            echo '';
+        }
+        
+        echo '</li>';
+        
+    }
+}
+?>
+</ol>
+<?php echo $this->paginator;?>

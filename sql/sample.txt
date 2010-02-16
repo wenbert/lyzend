@@ -1,0 +1,59 @@
+CREATE TABLE  `album` (
+name TEXT NOT NULL,
+freebase_id TEXT NOT NULL,
+artist TEXT NOT NULL,
+release_date TEXT NOT NULL,
+release_type TEXT NOT NULL,
+length TEXT NOT NULL,
+genre TEXT NOT NULL,
+label TEXT NOT NULL,
+producer TEXT NOT NULL,
+acquire_webpage TEXT NOT NULL,
+track TEXT NOT NULL,
+contributor TEXT NOT NULL,
+releases TEXT NOT NULL,
+engineer TEXT NOT NULL,
+compositions TEXT NOT NULL,
+supporting_tours TEXT NOT NULL,
+primary_release TEXT NOT NULL
+) ENGINE = MYISAM ;
+
+LOAD DATA LOCAL INFILE 'C:\\backups\\album.tsv' INTO TABLE album FIELDS TERMINATED 
+BY '\t' LINES TERMINATED BY '\n' 
+(
+name,
+freebase_id,
+artist,
+release_date,
+release_type,
+length,
+genre,
+label,
+producer,
+acquire_webpage,
+track,
+contributor,
+releases,
+engineer,
+compositions,
+supporting_tours,
+primary_release
+);
+
+name,
+id,
+artist,
+release_date,
+release_type,
+length,
+genre,
+label,
+producer,
+acquire_webpage,
+track,
+contributor,
+releases,
+engineer,
+compositions,
+supporting_tours,
+primary_release

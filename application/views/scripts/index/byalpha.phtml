@@ -1,0 +1,19 @@
+<?php
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+?>
+<h2>Artists starting with: <?php echo $this->letter?></h2>
+<?php echo $this->paginator;?>
+<ol>
+<?php 
+if($this->paginator) {
+    foreach($this->paginator AS $key=>$row){
+        echo '<li>'.$row->name;
+        echo ' <a href="'.$site_config['url'].'/index/tracks/'.$site_config['queryartistvar'].'/'.$row->name.'">Browse Songs/Tracks</a> |';
+        echo ' <a href="'.$site_config['url'].'/index/albums/'.$site_config['queryalbumvar'].'/'.$row->name.'">Browse Albums</a></li>';
+    }
+}
+?>
+</ol>
+<?php echo $this->paginator;?>
