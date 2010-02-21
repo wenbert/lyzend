@@ -15,6 +15,11 @@ class IndexController extends Zend_Controller_Action
         // action body
         $this->view->title = "Home Test";
         $this->view->headTitle($this->view->title);
+        $this->view->headScript()->appendFile('http://localhost/ly/public/js/jquery-1.3.2.min.js');
+        $this->view->headScript()->appendFile('http://localhost/ly/public/js/jquery-ui-1.7.2.custom.min.js');
+        $this->view->headScript()->appendFile('http://localhost/ly/public/js/jquery.autocomplete.min.js');
+        $this->view->headLink()->appendStylesheet('http://localhost/ly/public/css/ui-lightness/jquery-ui-1.7.2.custom.css');
+        $this->view->headLink()->appendStylesheet('http://localhost/ly/public/css/jquery.autocomplete.css');
     }    
     
     public function byalphaAction()
