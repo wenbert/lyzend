@@ -1,8 +1,12 @@
 <?php
-    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
-    $this->headTitle()->setSeparator(' - ');
-    $this->headTitle('Zend Framework Tutorial');
-    echo $this->doctype(); 
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Zend Framework Tutorial');
+echo $this->doctype();
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -10,14 +14,11 @@
 <?php echo $this->headScript(); ?> 
 <?php echo $this->headLink(); ?> 
 <?php echo $this->headTitle(); ?>
-
+<script type="text/javascript">
+var url = "<?php echo $site_config['url'] ?>";
+</script>
 </head>
 <body>
-<?php
-$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
-$options     = $bootstrap->getOptions();
-$site_config = $options['site'];
-?>
 <div id="content">
 <h1><?php echo $this->escape($this->title); ?></h1>
 <p><a href="<?php echo $site_config['url']?>">Home</a></p>

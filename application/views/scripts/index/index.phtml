@@ -15,6 +15,11 @@
 <script type="text/javascript">                                         
 $(document).ready(function() {
 // do stuff when DOM is ready
-    $("#artist").autocomplete("http://localhost/ly/public/query/getartistsbyline/q/"+$("#artist").val());
+    $("#artist").autocomplete(url+"/query/getartistsbyline/q/"+$("#artist").val());
+    
+    //If artist box has a valid artist name, then use that name to search for the track
+    //Else, use the gettrackbyline URL   
+    $("#track").autocomplete(url+"/query/gettracksbyline/q/"+$("#artist").val());
+
 });                             
 </script>  

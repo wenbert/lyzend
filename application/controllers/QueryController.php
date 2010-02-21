@@ -74,11 +74,15 @@ class QueryController extends Zend_Controller_Action
         $options            = $this->bootstrap->getOptions();
         $site_config        = $options['site'];
         
-        $artist =	$this->getRequest()->getParam($site_config['bytextartistvar']);; //filter and encode for url string
-        $results = $model->findartistintrackstable($artist);
+        $track =	$this->getRequest()->getParam($site_config['bytexttrackvar']);; //filter and encode for url string
+        $results = $model->findtracks($track);
           
         foreach($results AS $row) {
-            echo $row->name."\n";
+            if($row->artist) {
+                echo $row->name." [by: ".$row->artist."]\n";
+            } else {
+                echo $row->name."\n";
+            }
         }
     }
     

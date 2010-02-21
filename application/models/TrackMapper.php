@@ -50,8 +50,35 @@ class Ly_Model_TrackMapper
             $tracks[] = $track;
         }
         
-        return $tracks;
+        return $tracks;   
+    }
+    
+    public function findtracks($track_keyword)
+    {
+        if(!isset($track_keyword) OR empty($track_keyword)) {
+            throw new Exception ('Track keyword variable cannot be empty.');
+        }
+
+        $track_keyword = $track_keyword."%";
+        $sql = $this->getDbTable()->select()->distinct()->from('track',
+                    array('name','artist')
+                )->where('name LIKE ?',$track_keyword)->order('name');
         
+        $resultSet =  $this->getDbTable()->fetchAll($sql);
+
+        
+        //return new Ly_Model_Track($resultSet);
+        if(!count($resultSet)) return false;
+         
+        foreach ($resultSet as $row) {
+            $track = new Ly_Model_Track();
+            //$track->setId($row['id']);
+            $track->setName($row['name']);
+            $track->setArtist($row['artist']);
+            $tracks[] = $track;
+        }
+        
+        return $tracks;
     }
     
     public function findartistintrackstable($artist_keyword)
