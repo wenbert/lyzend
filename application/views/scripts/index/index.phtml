@@ -4,19 +4,17 @@
     <tr>
         <td>
             Type an artist name:
-            <input id="artist" type="text" value="test">
+            <input id="artist" type="text" value="">
         </td>
         <td>
             OR Type a song/track name:
-            <input type="text">
+            <input id="track" type="text">
         </td>
     </tr>
 </div>
 <script type="text/javascript">                                         
 $(document).ready(function() {
 // do stuff when DOM is ready
-    var data = "Core Selectors Attributes Traversing Manipulation CSS Events Effects Ajax Utilities".split(" ");
-    $("#artist").autocomplete(data);
-    //alert($("#artist").val());
+    $("#artist").autocomplete("http://localhost/ly/public/xml/getartistsbyline/q/"+$("#artist").val());
 });                             
 </script>  

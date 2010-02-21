@@ -54,5 +54,32 @@ class XmlController extends Zend_Controller_Action
         echo "</data>";
     }
     
+    public function getartistsbylineAction()
+    {
+        $model              = new Ly_Model_TrackMapper();
+        $options            = $this->bootstrap->getOptions();
+        $site_config        = $options['site'];
+        
+        $artist =	$this->getRequest()->getParam($site_config['bytextartistvar']);; //filter and encode for url string
+        $results = $model->findartistintrackstable($artist);
+          
+        foreach($results AS $row) {
+            echo $row->name."\n";
+        }
+    }
+    
+    public function gettracksbylineAction()
+    {
+        $model              = new Ly_Model_TrackMapper();
+        $options            = $this->bootstrap->getOptions();
+        $site_config        = $options['site'];
+        
+        $artist =	$this->getRequest()->getParam($site_config['bytextartistvar']);; //filter and encode for url string
+        $results = $model->findartistintrackstable($artist);
+          
+        foreach($results AS $row) {
+            echo $row->name."\n";
+        }
+    }
     
 }
