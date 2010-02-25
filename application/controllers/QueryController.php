@@ -62,7 +62,7 @@ class QueryController extends Zend_Controller_Action
         
         $artist =	$this->getRequest()->getParam($site_config['bytextartistvar']);; //filter and encode for url string
         $results = $model->findartistintrackstable($artist);
-          
+        
         foreach($results AS $row) {
             echo $row->name."\n";
         }
@@ -74,7 +74,9 @@ class QueryController extends Zend_Controller_Action
         $options            = $this->bootstrap->getOptions();
         $site_config        = $options['site'];
         
-        $track =	$this->getRequest()->getParam($site_config['bytexttrackvar']);; //filter and encode for url string
+        $track =	$this->getRequest()->getParam($site_config['bytexttrackvar']); //filter and encode for url string
+        $artist = $this->getRequest()->getParam("artist");
+        
         $results = $model->findtracks($track);
           
         foreach($results AS $row) {

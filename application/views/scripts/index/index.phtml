@@ -3,23 +3,32 @@
 <table>
     <tr>
         <td>
-            Type an artist name:
+            Artist name:
+        </td>
+        <td>
             <input id="artist" type="text" value="">
         </td>
         <td>
-            OR Type a song/track name:
+            <input type="button" value="Go"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Song/Track name:
+        </td>
+        <td>
             <input id="track" type="text">
+        </td>
+        <td>
+            <input type="button" value="Go"/>
         </td>
     </tr>
 </div>
 <script type="text/javascript">                                         
 $(document).ready(function() {
 // do stuff when DOM is ready
-    $("#artist").autocomplete(url+"/query/getartistsbyline/q/"+$("#artist").val());
+    $("#artist").autocomplete(url+"/query/getartistsbyline/"+$("#artist").val());
     
-    //If artist box has a valid artist name, then use that name to search for the track
-    //Else, use the gettrackbyline URL   
-    $("#track").autocomplete(url+"/query/gettracksbyline/q/"+$("#artist").val());
-
+    $("#track").autocomplete(url+"/query/gettracksbyline/"+$("#track").val());
 });                             
 </script>  
