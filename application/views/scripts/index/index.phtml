@@ -1,20 +1,19 @@
 <p>well, click something...</p>
-<p>the forms below are not yet available :P</p>
 <table>
     <tr>
         <td>
             Artist name:
         </td>
+        <form method="get" action="index/byalpha">
         <td>
-            <input id="artist" type="text" value="">
+            <input id="artist" name="q" type="text" value="">
         </td>
         <td>
-            <input type="button" value="Go"/>
+            <input type="submit" value="Go"/>
         </td>
-    </tr>
-    <tr>
+        </form>
         <td>
-            Song/Track name:
+            Song/Track name (not working yet):
         </td>
         <td>
             <input id="track" type="text">
@@ -23,7 +22,14 @@
             <input type="button" value="Go"/>
         </td>
     </tr>
-</div>
+</table>
+<p>
+    To do:
+    <ol>
+        <li>Display the lyrics</li>
+        <li>Make the Song/Track search work</li>
+    </ol>
+</p>
 <script type="text/javascript">                                         
 $(document).ready(function() {
 // do stuff when DOM is ready
