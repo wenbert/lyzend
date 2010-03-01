@@ -1,0 +1,23 @@
+<?php
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+?>
+<h2>Results for Track/Song: <?php echo $this->track_keyword?></h2>
+<?php echo $this->paginator;?>
+<ol>
+<?php 
+if($this->paginator) {
+    foreach($this->paginator AS $key=>$row){
+        echo '<li>';
+        echo '<a href="'.$site_config['url'].'/index/lyric?track='.$_GET['q'].'&artist='.$row->artist.'">';
+        echo $row->name;
+        echo ' by: ';
+        echo $row->artist;
+        echo '</a>';
+        echo '</li>';
+    }
+}
+?>
+</ol>
+<?php echo $this->paginator;?>

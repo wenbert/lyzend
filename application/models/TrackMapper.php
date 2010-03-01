@@ -66,7 +66,6 @@ class Ly_Model_TrackMapper
         
         $resultSet =  $this->getDbTable()->fetchAll($sql);
 
-        
         //return new Ly_Model_Track($resultSet);
         if(!count($resultSet)) return false;
          

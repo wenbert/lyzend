@@ -60,6 +60,31 @@ class IndexController extends Zend_Controller_Action
         }
     }
     
+    public function findtracksAction()
+    {
+        $options            = $this->bootstrap->getOptions();
+        $site_config        = $options['site'];
+        $pagination_config  = $options['pagination'];
+        
+        $track              = new Ly_Model_TrackMapper();
+        $track_keyword      = $this->getRequest()->getParam('q');
+        
+        /**
+         * 1) Explode q
+         * 2) Search for "track name" and "artist name"
+         * 3) Display results :D
+         */
+        
+        $this->view->track_keyword = $track_keyword;
+
+        //$this->view->artist = $artist->findbyalpha($letter);
+        $results = $track->findtracks($track_keyword);
+        
+        if(isset($results)) {
+            $this->view->paginator = $this->setupPagination($results);
+        }
+    }
+    
     public function albumsAction()
     {
         $options            = $this->bootstrap->getOptions();
@@ -164,4 +189,5 @@ class IndexController extends Zend_Controller_Action
         );
         return $paginator;
     }
+    
 }

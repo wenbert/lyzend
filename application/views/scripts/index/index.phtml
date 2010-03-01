@@ -1,10 +1,15 @@
+<?php
+$bootstrap   = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+$options     = $bootstrap->getOptions();
+$site_config = $options['site'];
+?>
 <p>well, click something...</p>
 <table>
     <tr>
         <td>
             Artist name:
         </td>
-        <form method="get" action="index/byalpha">
+        <form method="get" action="<?php echo $site_config['url']?>/index/byalpha">
         <td>
             <input id="artist" name="q" type="text" value="">
         </td>
@@ -15,26 +20,31 @@
         <td>
             Song/Track name (not working yet):
         </td>
+        <form method="get" action="<?php echo $site_config['url']?>/index/findtracks">
         <td>
-            <input id="track" type="text">
+            <input id="track" name="q" type="text" style="width: 200px;">
         </td>
         <td>
-            <input type="button" value="Go"/>
+            <input type="submit" value="Go"/>
         </td>
+        </form>
     </tr>
 </table>
 <p>
     To do:
-    <ol>
-        <li>Display the lyrics</li>
-        <li>Make the Song/Track search work</li>
-    </ol>
+    <pre>
+        /**
+        In IndexController > findtracksAction
+         * 1) Explode q
+         * 2) Search for "track name" and "artist name"
+         * 3) Display results :D
+         */
+    </pre>
 </p>
 <script type="text/javascript">                                         
 $(document).ready(function() {
 // do stuff when DOM is ready
     $("#artist").autocomplete(url+"/query/getartistsbyline/"+$("#artist").val());
-    
     $("#track").autocomplete(url+"/query/gettracksbyline/"+$("#track").val());
 });                             
 </script>  
